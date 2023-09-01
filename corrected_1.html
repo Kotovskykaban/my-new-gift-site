@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<title>404 Not Found</title>
+<style>
+        body {
+            background-color: #000;
+            font-family: 'Courier New', Courier, monospace;
+            color: #fff;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container, .gift-message {
+            text-align: center;
+            cursor: pointer;
+            overflow: hidden;
+            border-right: .15em solid #FF0000;
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blink-caret .5s step-end infinite;
+        }
+
+        @keyframes typing {
+          from { width: 0 }
+          to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+          from, to { border-color: transparent }
+          50% { border-color: #FF0000; }
+        }
+
+        h1, h2 {
+            color: #FF0000;
+            font-size: 4em;
+            margin-bottom: 20px;
+            user-select: none;
+        }
+
+        p {
+            font-size: 1.5em;
+            user-select: none;
+        }
+
+        .loading-progress {
+            display: none;
+            font-size: 2em;
+            margin-top: 20px;
+        }
+
+        .dots span {
+            animation-name: dotsBlink;
+            animation-duration: 1.5s;
+            animation-iteration-count: infinite;
+        }
+
+        .dots span:nth-child(1) {
+            animation-delay: 0.5s;
+        }
+
+        .dots span:nth-child(2) {
+            animation-delay: 1s;
+        }
+
+        @keyframes dotsBlink {
+            0%, 20%, 100% {
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+<h1>ERROR 404</h1>
+<p>Access Denied</p>
+</div>
+<div class="gift-message">
+<h2>Подарок не найден</h2>
+<p class="click-me">но найдена открытка, нажми на меня</p>
+<p class="loading-progress">loading<span class="dots"><span>.</span><span>.</span><span>.</span></span> <span class="percentage">0%</span></p>
+</div>
+<script>
+        const container = document.querySelector('.container');
+        const giftMessage = document.querySelector('.gift-message');
+        const clickMeText = document.querySelector('.click-me');
+        const loadingProgress = document.querySelector('.loading-progress');
+        const percentageDisplay = document.querySelector('.percentage');
+
+        container.addEventListener('click', () => {
+            alert('Just kidding! Click OK to proceed.');
+        });
+
+        giftMessage.addEventListener('click', () => {
+            clickMeText.style.display = 'none';
+            loadingProgress.style.display = 'block';
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress++;
+                percentageDisplay.textContent = `${progress}%`;
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    alert('Загрузка завершена! Вот ваша открытка :)');
+                    
+if (progress >= 100) {
+    clearInterval(interval);
+    alert('Загрузка завершена! Вот ваша открытка :)');
+    window.location.href = '2.html';
+}
+
+                    // window.location.href = 'card_page.html';
+                }
+            }, 50);  // This will take 5 seconds for loading from 0% to 100%
+        });
+    </script>
+</body>
+</html>
